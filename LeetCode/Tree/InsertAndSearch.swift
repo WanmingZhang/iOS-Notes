@@ -46,4 +46,20 @@ public class TreeNode {
         }
     }
     
+    func contains(root: TreeNode?, value: Int) {
+        if (root == nil) {
+            return false
+        } else if let rootNode = root {
+            if (value == rootNode.val) {
+                return true
+            } else if (value < rootNode.val) {
+                return contains(rootNode.left, value)
+            } else { // value >= rootNode.val
+                return contains(rootNode.right, value)
+            }
+        }
+        return false
+    }
+    
+    
 }
