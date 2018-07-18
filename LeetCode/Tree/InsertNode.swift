@@ -22,13 +22,28 @@ public class TreeNode {
         self.right = nil
     }
     
-    func insertNode(root: TreeNode?, value: Int) {
+    func insertNode(root: inout TreeNode?, value: Int) {
         if (root == nil) {
             root = TreeNode?.init(value)
         } else {
-            
+            insertNode(root!, value)
         }
     }
     
+    func insertNode(current: TreeNode, value: Int) {
+        if (value < current.val) {
+            if (current.left == nil) {
+                current.left = TreeNode.init(value)
+            } else {
+                insertNode(current.left!, value)
+            }
+        } else { // value >= current.val
+            if (current.right == nil) {
+                current.right = TreeNode.init(value)
+            } else {
+                insertNode(current.right!, value)
+            }
+        }
+    }
     
 }
