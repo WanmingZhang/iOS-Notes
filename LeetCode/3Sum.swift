@@ -5,12 +5,16 @@
 
 /**
  * Question Link: https://leetcode.com/problems/3sum/description/
- * Steps:
- *  Sort the array.
- *  Substract 1st element from the sum to break down the problem into a 2 sum problem.
- *  Use two pointers to traverse through the array from front to end and from end to front.
- *  Remove duplicates.
- * Time Complexity: O(n^2), Space Complexity: O(nC3)
+ 
+ This problem is an extention of Two Sum where instead of looking for 2 numbers, we are looking for 3.
+
+ The most naive apporach is to iterate through all possibilities of number triplets with 3 nested for loops. But what makes this difficult is that we can not have duplicate triplets, which means along with the 3 nested loops already taking O(n^3) time, we have to find a way to check if the triplet has already been found, slowing down the code even further.
+
+ The best apporach here is to treat this problem similarly to Problem 167 - Two Sum II - Input Array is Sorted. We can start by sorting the array (you will see why in a second). Start by putting 1 pointer, say i at the start of the array. Since we are looking for a sum of 0, we can instead use the remainder of the array (from i + 1 to nums.length - 1) to find two numbers with a sum of-nums[i], essentially reducing the problem to Two Sum II. Then we create 2 new pointers, left starting at i+1, and right starting at nums.length - 1.
+
+ The Two Sum II portion of this problem does have to be treated differently as we can not use duplicate triplets. In Two Sum II, if the sum of nums[left] and nums[right] was not equal to the target, then we would just increment/decrement one of the pointer accordingly. But in this case, doing so could result in duplicates. The reason for sorting the array to begin with is so that instead of just incrementing/decrementing the pointer by 1, we increment/decrement until we find a new number, ensuring we do not use a duplicate.
+
+ After the Two Sum portion, to ensure we do not find more duplicates again, we have to set i to a new value. The code would look like:
  */
 
 
