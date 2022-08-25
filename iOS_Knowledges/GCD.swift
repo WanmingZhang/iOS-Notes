@@ -8,7 +8,7 @@
 import Foundation
 
 /**
- * GCD operates on dispatch queues through a class called DispatchQueue. You submits units of work to this queue and GCD will execute them in a FIFO order (first in first out), guaranteeing the first order submitted is the first one started.
+ * GCD operates on dispatch queues through a class called DispatchQueue. You submit units of work to this queue and GCD will execute them in a FIFO order (first in first out), guaranteeing the first order submitted is the first one started.
  * Dispatch queues are thread safe which means that they can be accessed from multiple threads simultaneously.
  * Queues can be either serial or concurrent.
  * Serial queues guarantee that only one task runs at any given time. First tasks has to finish before next task can start.
